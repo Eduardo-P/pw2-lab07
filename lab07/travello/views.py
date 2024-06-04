@@ -11,7 +11,7 @@ def index(request):
 
 def destinationCreate(request):
     form = DestinationForm(request.POST or None)
-    if form.id_valid():
+    if form.is_valid():
         form.save()
         form = DestinationForm()
     
