@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Destination
 from .forms import DestinationForm
 
@@ -39,7 +39,10 @@ def destinationEdit(request, myID):
 def destinationDelete(request, myID):
     obj = get_object_or_404(Destination, id = myID)
     if request.method == 'POST':
-        obj.delete()
+        if 'eliminar' in request.POST:
+            obj.delete()
+        elif 'cancelar' in request.POST:
+            return redirect('../../')
         
     context = {
         'objeto': obj
