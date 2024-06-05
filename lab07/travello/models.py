@@ -7,3 +7,6 @@ class Destination(models.Model):
     imagenCiudad = models.ImageField(upload_to='pics')
     precioTour = models.IntegerField()
     ofertaTour = models.BooleanField(default=False)
+    
+    class Meta:
+        ordering = ['id']
