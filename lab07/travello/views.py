@@ -35,3 +35,13 @@ def destinationEdit(request, myID):
         'form': form
     }
     return render(request, 'destinationCreate.html', context)
+
+def destinationDelete(request, myID):
+    obj = get_object_or_404(Destination, id = myID)
+    if request.method == 'POST':
+        obj.delete()
+        
+    context = {
+        'objeto': obj
+    }
+    return render(request, 'destinationDelete.html', context)
