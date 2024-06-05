@@ -52,6 +52,13 @@ def destinationDelete(request, myID):
 def destinationList(request):
     destinations = Destination.objects.all()
     
+    if request.method == 'POST':
+        id = request.POST.get('id', '')
+        if 'modificar' in request.POST:
+            return redirect(f'../agregar_destino/{id}/')
+        elif 'eliminar' in request.POST:
+            return redirect(f'../eliminar_destino/{id}/')
+    
     context = {
         'objectList': destinations
     }

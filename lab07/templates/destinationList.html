@@ -1,3 +1,9 @@
 {% for instance in objectList %}
+<form method='POST'> {% csrf_token %}
+    <input type="hidden" name="id" value='{{ instance.id }}'/>
     <p> {{ instance.id }} - {{ instance.nombreCiudad }} </p>
+    <input type='submit' name='modificar' value='Modificar'/>
+    <input type='submit' name='eliminar' value='Eliminar'/>
+</form>
+    
 {% endfor %}
