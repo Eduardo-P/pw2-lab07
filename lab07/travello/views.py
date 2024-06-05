@@ -27,7 +27,7 @@ def destinationEdit(request, myID):
         form = DestinationForm(request.POST, request.FILES, instance = obj)
         if form.is_valid():
             form.save()
-            form = DestinationForm()
+            return redirect('../../lista_destinos/')
     else:
         form = DestinationForm(instance = obj)
     
@@ -41,8 +41,7 @@ def destinationDelete(request, myID):
     if request.method == 'POST':
         if 'eliminar' in request.POST:
             obj.delete()
-        elif 'cancelar' in request.POST:
-            return redirect('../../')
+        return redirect('../../lista_destinos/')
         
     context = {
         'objeto': obj
