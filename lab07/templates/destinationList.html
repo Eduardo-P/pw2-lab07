@@ -1,13 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Destinos{% endblock %}
+
+{% block content %}
 <table>
-{% for instance in objectList %}
-    <tr>
-        <form method='POST'> {% csrf_token %}
-            <input type="hidden" name="id" value='{{ instance.id }}'/>
-            <td>{{ instance.id }}</td>
-            <td>{{ instance.nombreCiudad }}</td>
-            <td><input type='submit' name='modificar' value='Modificar'/></td>
-            <td><input type='submit' name='eliminar' value='Eliminar'/></td>
-        </form>
-    </tr>
-{% endfor %}
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre de la Ciudad</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for instance in objectList %}
+        <tr>
+            <form method='POST'> {% csrf_token %}
+                <input type="hidden" name="id" value='{{ instance.id }}'/>
+                <td>{{ instance.id }}</td>
+                <td>{{ instance.nombreCiudad }}</td>
+                <td>
+                    <input type='submit' name='modificar' value='Modificar'/>
+                    <input type='submit' name='eliminar' value='Eliminar'/>
+                </td>
+            </form>
+        </tr>
+    {% endfor %}
+    </tbody>
 </table>
+{% endblock %}
