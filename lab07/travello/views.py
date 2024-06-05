@@ -24,7 +24,7 @@ def destinationEdit(request, myID):
     obj = get_object_or_404(Destination, id = myID)
     
     if request.method == 'POST':
-        form = DestinationForm(request.POST, request.Files, instance = obj)
+        form = DestinationForm(request.POST, request.FILES, instance = obj)
         if form.is_valid():
             form.save()
             form = DestinationForm()
