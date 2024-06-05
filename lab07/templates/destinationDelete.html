@@ -1,6 +1,13 @@
-<form method='POST'> {% csrf_token %}
-    <h1>Quiere borrar a este destino turistico: </h1>
+{% extends 'base.html' %}
+
+{% block title %}Eliminar Destino{% endblock %}
+
+{% block content %}
+<form method='POST'>
+    {% csrf_token %}
+    <h1>¿Quiere borrar a este destino turístico?</h1>
     <h2>{{ objeto.nombreCiudad }}</h2>
     <input type='submit' name='eliminar' value='Eliminar'/>
     <input type='submit' name='cancelar' value='Cancelar'/>
 </form>
+{% endblock %}
