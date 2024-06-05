@@ -10,7 +10,7 @@ def index(request):
     return render(request, "index.html", {'dests': dests})
 
 def destinationCreate(request):
-    form = DestinationForm(request.POST or None)
+    form = DestinationForm(request.POST, request.FILES or None)
     if form.is_valid():
         form.save()
         form = DestinationForm()
