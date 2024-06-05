@@ -1,4 +1,11 @@
-<form method='POST' enctype="multipart/form-data"> {% csrf_token %}
+{% extends 'base.html' %}
+
+{% block title %}Agregar Destino{% endblock %}
+
+{% block content %}
+<form method='POST' enctype="multipart/form-data">
+    {% csrf_token %}
     {{ form.as_p }}
     <input type='submit' value='Guardar'/>
 </form>
+{% endblock %}
