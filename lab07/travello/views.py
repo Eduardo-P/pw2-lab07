@@ -48,3 +48,11 @@ def destinationDelete(request, myID):
         'objeto': obj
     }
     return render(request, 'destinationDelete.html', context)
+
+def destinationList(request):
+    destinations = Destination.objects.all()
+    
+    context = {
+        'objectList': destinations
+    }
+    return render(request, 'destinationList.html', context)
