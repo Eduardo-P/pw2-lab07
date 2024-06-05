@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Destination
 from .forms import DestinationForm
 
@@ -14,6 +14,22 @@ def destinationCreate(request):
     if form.is_valid():
         form.save()
         form = DestinationForm()
+    
+    context = {
+        'form': form
+    }
+    return render(request, 'destinationCreate.html', context)
+
+def destinationEdit(request, myID):
+    obj = get_object_or_404(Destination, id = myID)
+    
+    if request.method == 'POST':
+        form = DestinationForm(request.POST, request.Files, instance = obj)
+        if form.is_valid():
+            form.save()
+            form = DestinationForm()
+    else:
+        form = DestinationForm(instance = obj)
     
     context = {
         'form': form
